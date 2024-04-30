@@ -4,13 +4,13 @@ public class Start
 {
 	public static void main(String[] args)
 	{
-		Frame f1=new Frame();
+		Rudiyaframe f1=new Rudiyaframe();
 		f1.setVisible(true);
 		
-		Signinframe s1=new Signinframe();
-		s1.setVisible(true);
+		//Signinframe s1=new Signinframe();
+		//s1.setVisible(true);
 		
-		RegisterFrame r1=new RegisterFrame();
-		r1.setVisible(true);
+		//RegisterFrame r1=new RegisterFrame();
+		//r1.setVisible(true); 
 	}
 }

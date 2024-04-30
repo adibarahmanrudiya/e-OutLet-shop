@@ -3,27 +3,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Signinframe extends JFrame implements ActionListener
+public class Signinframe extends JFrame implements MouseListener,ActionListener
 {
 	JPanel panel;
 	JLabel userlb,passlb;
 	JTextField userTF;
 	JPasswordField passPF;
-	JButton signinbtn,exitbtn;
-	Color myColor;
-	Font myFont;
+	JButton signinbtn,nextbtn;
+	Color mycolor;
+	Font myfont;
 	
 	public Signinframe()
 	{
 		super("e-OutLet");
 		this.setSize(800,450);
 		this.setLocation(300,150);
-		myColor=new Color(239,228,176);
-		myFont=new Font("Roboto",Font.PLAIN,28);
+		mycolor=new Color(239,228,176);
+		myfont=new Font("Roboto",Font.PLAIN,28);
 			
 			panel=new JPanel();
 			panel.setLayout(null);
-			panel.setBackground(myColor);
+			panel.setBackground(mycolor);
 			
 			userlb=new JLabel("Username: ");
 			userlb.setBounds(250,50,100,50);
@@ -46,22 +46,62 @@ public class Signinframe extends JFrame implements ActionListener
 			signinbtn=new JButton("Signin");
 			signinbtn.setBounds(280,250,100,50);
 			signinbtn.setBackground(Color.ORANGE);
+			signinbtn.addMouseListener(this);
 			signinbtn.addActionListener(this);
 			
 			panel.add(signinbtn);
 			
-			exitbtn=new JButton("Exit");
-			exitbtn.setBounds(400,250,100,50);
-			exitbtn.setBackground(Color.RED);
-			exitbtn.addActionListener(this);
+			nextbtn=new JButton("Next");
+			nextbtn.setBounds(400,250,100,50);
+			nextbtn.setBackground(Color.RED);
+			nextbtn.addMouseListener(this);
+			nextbtn.addActionListener(this);
 					
-			panel.add(exitbtn);
+			panel.add(nextbtn);
 			
 			
 			
 			
 			this.add(panel);
 	}
+	    public void mouseClicked(MouseEvent me){}
+		public void mousePressed(MouseEvent me){}
+		public void mouseReleased(MouseEvent me){}
+		public void mouseEntered(MouseEvent me)
+		{
+			
+			if(me.getSource()==signinbtn)
+			{
+			signinbtn.setBackground(Color.BLUE);
+			signinbtn.setForeground(Color.WHITE);
+			}
+			else if(me.getSource()==nextbtn)
+			{
+			nextbtn.setBackground(Color.BLUE);
+			nextbtn.setForeground(Color.WHITE);
+			}
+			else
+			{
+			}
+		}
+		public void mouseExited(MouseEvent me)
+		{
+			
+			if(me.getSource()==signinbtn)
+			{
+			
+			signinbtn.setBackground(Color.WHITE);
+			signinbtn.setForeground(Color.BLACK);
+			}
+			else if(me.getSource()==nextbtn)
+			{
+			nextbtn.setBackground(Color.WHITE);
+			nextbtn.setForeground(Color.BLACK);
+			}
+			else
+			{
+			}
+		}
 	public void actionPerformed(ActionEvent ae)
 	{
 		String s1=userTF.getText();
@@ -74,23 +114,16 @@ public class Signinframe extends JFrame implements ActionListener
 				JOptionPane.showMessageDialog(this,"Fill Up All");
 			}
 			else{
-			JOptionPane.showMessageDialog(this,"Logingin");
-			Frame f1=new Frame();
-			f1.setVisible(true);
-			this.setVisible(false);
+			JOptionPane.showMessageDialog(this,"Signin in");
 			}
 		}
-		else if(ae.getSource()==exitbtn)
-		{
-			Frame f1=new Frame();
+		 if(ae.getSource()==nextbtn)
+		{  
+	        nextbtn.setBackground(Color.BLUE);
+			RegisterFrame f1=new RegisterFrame();
 			f1.setVisible(true);
 			this.setVisible(false);
 		}
 	}
-	
-		
-	
-			
-	
 	
 }
